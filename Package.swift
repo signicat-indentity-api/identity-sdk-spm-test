@@ -1,9 +1,13 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let checksum: String = "63a3a0fd357ff4b07d59489303305f07d174b5054e53657d1037660a54864792"
+
+let dependencies: [Target.Dependency] = [
+    .product(name: "VideoIDSDK", package: "videoidskd-spm")
+]
 
 let package = Package(
     name: "IdentitySDK",
@@ -19,10 +23,9 @@ let package = Package(
     ],
     
     dependencies: [
-        .package(
-            url: "https://github.com/signicat/videoidskd-spm.git", exact: "1.33.0")
-        ),
+        .package(url: "https://github.com/signicat/videoidskd-spm.git", from: "1.34.0")
     ],
+
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
