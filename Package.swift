@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "IdentitySDKTest",
     platforms: [
-        .iOS(.v12) // or your minimum supported version
+        .iOS("15.0") // or your minimum supported version
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
@@ -15,6 +15,7 @@ let package = Package(
             targets: ["IdentitySDK"]
         ),
     ],
+    
     dependencies: [
         .package(
             url: "https://github.com/signicat/videoidskd-spm",
