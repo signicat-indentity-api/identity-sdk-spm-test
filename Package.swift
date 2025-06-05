@@ -12,7 +12,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "IdentitySDKTest",
-            targets: ["IdentitySDK"]
+            targets: ["IdentitySDK", "_IdentitySDKStub"]
         ),
     ],
     
@@ -25,6 +25,7 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
+        .target(name: "_IdentitySDKStub"),
         .binaryTarget(
             name: "IdentitySDK",
             url: "https://github.com/signicat-indentity-api/identity-sdk-ios/archive/refs/tags/v3.2.0.zip",
