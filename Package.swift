@@ -3,41 +3,34 @@
 
 import PackageDescription
 
+let checksum: String = "63a3a0fd357ff4b07d59489303305f07d174b5054e53657d1037660a54864792"
+
 let package = Package(
-    name: "IdentitySDKTest",
+    name: "IdentitySDK",
     platforms: [
         .iOS("15.0") // or your minimum supported version
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "IdentitySDKTest",
+            name: "IdentitySDK",
             targets: ["IdentitySDK", "_IdentitySDKStub"]
         ),
     ],
     
     dependencies: [
         .package(
-            url: "https://github.com/signicat/videoidskd-spm",
-            .exact("1.33.0")
+            url: "https://github.com/signicat/videoidskd-spm.git", exact: "1.33.0")
         ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(name: "_IdentitySDKStub"),
+        .target(name: "_IdentitySDKStub", dependencies: dependencies),
         .binaryTarget(
             name: "IdentitySDK",
             url: "https://github.com/signicat-indentity-api/identity-sdk-ios/archive/refs/tags/v3.2.0.zip",
-            checksum: "63a3a0fd357ff4b07d59489303305f07d174b5054e53657d1037660a54864792"
-        ),
-        // If you need to expose the dependency to consumers, you can add a target that depends on both:
-        // .target(
-        //     name: "IdentitySDKWrapper",
-        //     dependencies: [
-        //         "IdentitySDK",
-        //         .product(name: "VideoIDSDK", package: "videoidskd-spm")
-        //     ]
-        // ),
+            checksum: checksum
+        )
     ]
 )
