@@ -3,7 +3,7 @@
 
 import PackageDescription
 
-let checksum: String = "63a3a0fd357ff4b07d59489303305f07d174b5054e53657d1037660a54864792"
+let checksum: String = "d7d90a21b4e8c83970ce0e70e5c4db83784505aa99a1ee33a1348eab586a28e3"
 
 let dependencies: [Target.Dependency] = [
     .product(name: "VideoIDSDK", package: "videoidskd-spm")
