@@ -23,7 +23,7 @@ let package = Package(
     ],
     
     dependencies: [
-        .package(url: "https://github.com/signicat/videoidskd-spm.git", exact: "1.35.1")
+        .package(url: "https://github.com/signicat/videoidskd-spm.git", exact: "1.38.1")
     ],
 
     targets: [
@@ -32,7 +32,7 @@ let package = Package(
         .target(name: "_IdentitySDKStub", dependencies: dependencies),
         .binaryTarget(
             name: "IdentitySDK",
-            url: "https://github.com/signicat-indentity-api/identity-sdk-ios/archive/refs/tags/v3.2.0.zip",
+            url: "https://github.com/signicat-indentity-api/identity-sdk-ios/archive/refs/tags/v3.2.1.zip",
             checksum: checksum
         )
     ]
