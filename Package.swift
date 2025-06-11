@@ -1,39 +1,36 @@
 // swift-tools-version:5.6
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
-
-let checksum: String = "d7d90a21b4e8c83970ce0e70e5c4db83784505aa99a1ee33a1348eab586a28e3"
-
-let dependencies: [Target.Dependency] = [
-    .product(name: "VideoIDSDK", package: "videoidskd-spm")
-]
 
 let package = Package(
     name: "IdentitySDK",
     platforms: [
-        .iOS("15.0") // or your minimum supported version
+        .iOS(.v15)
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "IdentitySDK",
-            targets: ["_IdentitySDKStub"]
-        ),
+            targets: ["IdentitySDKWrapper"]
+        )
     ],
-    
     dependencies: [
         .package(url: "https://github.com/signicat/videoidskd-spm.git", exact: "1.38.1")
     ],
-
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(name: "_IdentitySDKStub", dependencies: [.target(name: "IdentitySDK"), .product(name: "VideoIDSDK", package: "videoidskd-spm")]),
+        /// Wrapper target to forward both the binary and the external SPM dependency.
+        .target(
+            name: "IdentitySDKWrapper",
+            dependencies: [
+                "IdentitySDK",
+                .product(name: "VideoIDSDK", package: "videoidskd-spm")
+            ],
+            path: "Sources/IdentitySDKWrapper"
+        ),
+
+        /// The binary XCFramework target
         .binaryTarget(
             name: "IdentitySDK",
-            url: "https://github.com/signicat-indentity-api/identity-sdk-ios/archive/refs/tags/v3.2.1.zip",
-            checksum: checksum
+            url: "https://github.com/signicat-indentity-api/identity-sdk-ios/releases/download/v3.2.1/IdentitySDK.xcframework.zip",
+            checksum: "d7d90a21b4e8c83970ce0e70e5c4db83784505aa99a1ee33a1348eab586a28e3"
         )
     ]
 )
