@@ -12,16 +12,12 @@ let package = Package(
             targets: ["IdentitySDKWrapper"]
         )
     ],
-    dependencies: [
-        .package(url: "https://github.com/signicat/videoidskd-spm.git", exact: "1.38.1")
-    ],
     targets: [
         /// Wrapper target to forward both the binary and the external SPM dependency.
         .target(
             name: "IdentitySDKWrapper",
             dependencies: [
-                .target(name: "IdentitySDK"),
-                .product(name: "VideoIDSDK", package: "videoidskd-spm")
+                .target(name: "IdentitySDK")
             ],
             path: "Sources/IdentitySDKWrapper"
         ),
