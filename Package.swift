@@ -20,7 +20,7 @@ let package = Package(
            name: "IdentitySDKWrapper",
            dependencies: [
                .target(name: "IdentitySDK"),
-               .product(name: "VideoID", package: "videoidskd-spm")
+               .product(name: "VideoIDSDK", package: "videoidskd-spm")
            ],
            path: "Sources/IdentitySDKWrapper"
        ),
