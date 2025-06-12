@@ -9,6 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "IdentitySDK",
+            type: .dynamic,
             targets: ["IdentitySDKWrapper"]
         )
     ],
