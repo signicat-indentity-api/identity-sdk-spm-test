@@ -12,6 +12,9 @@ let package = Package(
             targets: ["IdentitySDK"]
         )
     ],
+    dependencies: [
+           .package(url: "https://github.com/signicat/videoidskd-spm.git", exact: "1.38.1")
+       ],
     targets: [
         /// The binary XCFramework target
         .binaryTarget(
