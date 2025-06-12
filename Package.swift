@@ -9,20 +9,10 @@ let package = Package(
     products: [
         .library(
             name: "IdentitySDK",
-            type: .dynamic,
-            targets: ["IdentitySDKWrapper"]
+            targets: ["IdentitySDK"]
         )
     ],
     targets: [
-        /// Wrapper target to forward both the binary and the external SPM dependency.
-        .target(
-            name: "IdentitySDKWrapper",
-            dependencies: [
-                .target(name: "IdentitySDK")
-            ],
-            path: "Sources/IdentitySDKWrapper"
-        ),
-
         /// The binary XCFramework target
         .binaryTarget(
             name: "IdentitySDK",
